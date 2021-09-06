@@ -40,7 +40,7 @@ def json_create():
                  "hijos": []
                  }
 
-    json_test = {"max": max_json, "emma": emma_json}
+    json_test = {"max": max_json, "emma": emma_json} # JSON mayor
 
     print('Imprimir json como un objeto')
     print(emma_json)
