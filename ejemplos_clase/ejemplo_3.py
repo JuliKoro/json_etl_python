@@ -25,22 +25,23 @@ def extract(url):
     # Extraer el JSON de la URL pasada
     # como parámetro
     response = requests.get(url)
-    data = response.json()
+    data = response.json() # Lista de todos los JSONs
     return data
 
 
 def transform(data):
     # Transformar los datos en dos vectores
     # para graficar
-    x = [d['time'] for d in data]
-    y = [d['signal'] for d in data]
+    # Separa los datos en 'tiempo' y 'señal'
+    x = [d['time'] for d in data] # abscisas
+    y = [d['signal'] for d in data] # ordenadas
     return x, y
 
 
 def load(x ,y):
     # El código a continuación es especial
     # para animaciones de gráficos de línea
-    line.set_data(x, y)
+    line.set_data(x, y) # Carga los datos en el gráfico
     fig.gca().relim()
     fig.gca().autoscale_view()
     return line,
@@ -60,8 +61,9 @@ def update_animation(frame):
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
-    #
+    
     print('# ---- Ejemplos con JSON ETL ---- #')
+    # Consumir los datos de una web (JSON) y poder graficarlos (matplotlib)
 
     # Crear el gráfico
     data = []
@@ -69,7 +71,7 @@ if __name__ == '__main__':
     fig = plt.figure()
     line, = plt.plot(data)
 
-    # Graficar
+    # Graficar como animación
     animation = FuncAnimation(fig, update_animation, interval=1000)
     plt.show()
 

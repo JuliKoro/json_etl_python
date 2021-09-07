@@ -20,21 +20,22 @@ import requests
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
-    #
+    
     print('# ---- Ejemplos con JSON Request ---- #')
 
-    response = requests.get("https://jsonplaceholder.typicode.com/todos/1")
+    response = requests.get("https://jsonplaceholder.typicode.com/todos/1") # JSON único (el 1ero de la lista)
     # Se puede obtener el objeto JSON de dos formas distintas
-    data = json.loads(response.text)
-    data = response.json()
+    # El requests "crudo" solo trae el valor '200' (status_code) -> requests OK (reason)
+    data = json.loads(response.text) # Para traer solo el texto (contenido)
+    data = response.json() # Guardo en formato JSON
     print('Imprimir los datos traídos de la nube')
     print(json.dumps(data, indent=4))
 
-    response = requests.get("https://jsonplaceholder.typicode.com/todos")
+    response = requests.get("https://jsonplaceholder.typicode.com/todos") # Toda la lista de JSONs
     data = response.json()
 
     for user in data:
-        if user['userId'] > 2:
+        if user['userId'] > 2: # Filtra los JSON
             # No mostrar más de 2 usuarios
             # para no ocupar toda la pantalla con mensajes
             break

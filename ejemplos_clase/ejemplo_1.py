@@ -59,6 +59,7 @@ def json_create():
 
 def json_serialize():
     # Generar un json y almacenarlo en archivo (dump)
+    # Poner un JSON uno atras del otro (en serie)
 
     estudiante1 = {
                   "nombre": "Max",
@@ -76,12 +77,13 @@ def json_serialize():
                    }
 
     with open('mi_json.json', 'w') as jsonfile:
-        data = [estudiante1]
-        json.dump(data, jsonfile, indent=4)
+        data = [estudiante1] # Lista de JSONs
+        json.dump(data, jsonfile, indent=4) # Lo guarda en el archivo con el formato
 
 
-def json_deserialize():
+def json_deserialize(): 
     # Leer json y actualizarlo
+    # Desarmarlo y editarlo (Separarlo)
     estudiante2 = {
                   "nombre": "Jean",
                   "apellido": "Gray",
@@ -98,11 +100,11 @@ def json_deserialize():
                    }
 
     with open('mi_json.json', 'r') as jsonfile:
-        current_data = json.load(jsonfile)
+        current_data = json.load(jsonfile) # Carga los JSONs a una lista
         current_data.append(estudiante2)
 
     with open('mi_json.json', 'w') as jsonfile:
-        json.dump(current_data, jsonfile, indent=4)
+        json.dump(current_data, jsonfile, indent=4) # Sube el nuevo JSON al archivo
 
     with open('mi_json.json', 'r') as jsonfile:
         json_data = json.load(jsonfile)
@@ -113,7 +115,7 @@ def json_deserialize():
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
-    #
+    
     print('# ---- Ejemplos con JSON ---- #')
     json_create()
     json_serialize()
