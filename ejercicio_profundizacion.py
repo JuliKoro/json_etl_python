@@ -2,6 +2,8 @@ import requests
 import json
 import matplotlib as plt
 
+url = 'https://api.mercadolibre.com/sites/MLA/search?category=MLA1459&q=Departamentos%20Alquileres%20Mendoza%20&limit=50'
+
 def fetch():
     pass
 
