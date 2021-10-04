@@ -65,8 +65,10 @@ if __name__ == '__main__':
     fig = plt.figure()
     fig.suptitle('Títulos por Usuario', fontsize=16)
     ax = fig.add_subplot()
-
+    ax.set_xlabel('Usuario', c='black', fontweight='bold') # Nombre del eje x
+    ax.set_ylabel('Cantidad de títulos', c='black', fontweight='bold')
     ax.bar(eje_x, eje_y, label='Títulos')
+    plt.xticks(eje_x)
     ax.set_facecolor('whitesmoke')
     ax.legend()
     plt.show()
