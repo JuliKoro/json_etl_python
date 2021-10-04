@@ -1,0 +1,23 @@
+{
+    "nombre": "Juli\u00e1n",
+    "apellido": "Koroluk",
+    "DNI": 42315678,
+    "vestimenta": [
+        {
+            "prenda": "zapatillas",
+            "cantidad": 2
+        },
+        {
+            "prenda": "remera",
+            "cantidad": 3
+        },
+        {
+            "prenda": "jeans",
+            "cantidad": 1
+        },
+        {
+            "prenda": "buzo",
+            "cantidad": 2
+        }
+    ]
+}

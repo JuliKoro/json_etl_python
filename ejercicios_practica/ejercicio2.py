@@ -45,5 +45,32 @@ if __name__ == '__main__':
     # para imprimir cuantos títulos completó cada usuario
     # y verifique si los primeros usuarios (mirando la página a ojo)
     # los datos recolectados son correctos.
+    usuarios = []
+    user = {}
+    response = requests.get(url)
+    data = response.json()
+    for x in range(1,11):
+        user[x] = 0
+        for i in range(len(data)):
+            if data[i]["userId"] == x and data[i]["completed"] is True:
+                user[x] = user[x] + 1
+        usuarios.append(user)
+
+    eje_x = list(user.keys())
+    eje_y = list(user.values())
+
+    print('Usuarios: ',eje_x)
+    print('Títulos: ', eje_y)
+
+    fig = plt.figure()
+    fig.suptitle('Títulos por Usuario', fontsize=16)
+    ax = fig.add_subplot()
+
+    ax.bar(eje_x, eje_y, label='Títulos')
+    ax.set_facecolor('whitesmoke')
+    ax.legend()
+    plt.show()
+
+            
 
     print("terminamos")
