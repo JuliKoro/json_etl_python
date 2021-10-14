@@ -19,7 +19,7 @@ def fetch(ciudad):
     url = 'https://api.mercadolibre.com/sites/MLA/search?category=MLA1459&q=Departamentos%20Alquileres%20'+ciudad+'%20&limit=50'
     response = requests.get(url)
     data = response.json()
-    dataset = [{'price': item["price"], 'condition': item["condition"]} for item in data["results"] if item["currency_id"] == "ARS"] # Filtra el json
+    dataset = [{'price': item["price"], 'condition': item["condition"], 'atributos': item["attributes"]} for item in data["results"] if item["currency_id"] == "ARS"] # Filtra el json
     return dataset
 
 
@@ -41,7 +41,7 @@ def transform(dataset, min, max):
     min_max_price = [x for x in dataset if min < x['price'] < max]
     max_price = [x for x in dataset if x['price'] > max]
     precios = [x['price'] for x in dataset]
-    #areas = [x['area'] for x in dataset]
+    areas = [x["value_struct"]["number"] for x in dataset['atributos']]
 
     min_count = len(min_price)
     min_max_count = len(min_max_price)
