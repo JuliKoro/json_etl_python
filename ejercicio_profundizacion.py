@@ -16,7 +16,7 @@ def fetch(ciudad):
     if ' ' in ciudad:
         ciudad = ciudad.replace(' ', '%20')
     
-    url = 'https://api.mercadolibre.com/sites/MLA/search?category=MLA1459&q=Departamentos%20Alquileres%20'+ciudad+'%20&limit=50'
+    url = f'https://api.mercadolibre.com/sites/MLA/search?category=MLA1459&q=Departamentos%20Alquileres%20{ciudad}%20&limit=50'
     response = requests.get(url)
     data = response.json()
     dataset = [{'price': item["price"], 'condition': item["condition"], 'area': item["attributes"][1]["value_struct"]} for item in data["results"] if item["currency_id"] == "ARS"] # Filtra el json
